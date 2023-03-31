@@ -13,13 +13,14 @@ function displayCityFromSearch(event) {
   let city = document.querySelector("h1");
   let input = document.getElementById("form-input");
   city.innerText = input.value;
-  let cityQuery = "https://api.openweathermap.org/data/2.5/weather"
-  axios.get(`${cityQuery}?q=${city.innerText}&appid=${apiKey}&units=metric`).then(updateTemperature);
+  let cityQuery = "https://api.openweathermap.org/data/2.5/weather";
+  axios
+    .get(`${cityQuery}?q=${city.innerText}&appid=${apiKey}&units=metric`)
+    .then(updateTemperature);
 }
 
 let searchInput = document.getElementById("weather-form");
 searchInput.addEventListener("submit", displayCityFromSearch);
-
 
 /* Update data from current location */
 
@@ -34,8 +35,10 @@ function showCurrentCityTemp(response) {
 function showCurrentPostion(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let currentCityQuery = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}`
-  axios.get(`${currentCityQuery}&appid=${apiKey}&units=metric`).then(showCurrentCityTemp);
+  let currentCityQuery = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}`;
+  axios
+    .get(`${currentCityQuery}&appid=${apiKey}&units=metric`)
+    .then(showCurrentCityTemp);
 }
 
 function displayCurrentCity() {

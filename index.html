@@ -17,10 +17,12 @@
   <div class="container">
     <div class="card" style="width: 820px; height:600px">
       <div class="card-body">
+        <h5 class="card-title"></h5>
         <form id="weather-form">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search location" id="form-input">
-            <button class="btn btn-primary" type="submit">Search</button>
+            <input type="text" class="form-control" placeholder="Search location" aria-label="Recipient's username"
+              aria-describedby="button-addon2" id="form-input">
+            <button class="btn btn-primary" type="submit" id="searchButton">Search</button>
             <button type="button" class="btn btn-dark" id="current-location">Current location</button>
           </div>
         </form>
