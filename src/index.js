@@ -3,19 +3,23 @@ const apiKey = "6d68aadfacdd4f5163bc273049a0cf2d";
 /* Update data from search query */
 
 function updateTemperature(response) {
+  let city = document.querySelector("h1");
+  let input = document.getElementById("form-input");
+  city.innerText = input.value;
   let temperatureElt = document.getElementById("main-city-temp");
   let temperature = Math.round(response.data.main.temp);
   temperatureElt.innerHTML = `${temperature} °C `;
+
 }
+
 
 function displayCityFromSearch(event) {
   event.preventDefault();
   let city = document.querySelector("h1");
   let input = document.getElementById("form-input");
-  city.innerText = input.value;
   let cityQuery = "https://api.openweathermap.org/data/2.5/weather";
   axios
-    .get(`${cityQuery}?q=${city.innerText}&appid=${apiKey}&units=metric`)
+    .get(`${cityQuery}?q=${input.value}&appid=${apiKey}&units=metric`)
     .then(updateTemperature);
 }
 
