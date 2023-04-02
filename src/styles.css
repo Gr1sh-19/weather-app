@@ -89,8 +89,8 @@ footer {
   color: rgb(34, 7, 61);
 }
 footer {
-  position: fixed;
-  top: 420px;
+  position: relative;
+  top: 320px;
 }
 i {
   font-size: 48px;
@@ -115,4 +115,9 @@ h5 {
 }
 .fa-snowflake {
   color: ivory;
+}
+.bottom-footer {
+  font-size: x-small;
+  position: relative;
+  top: 630px;
 }
