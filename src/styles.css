@@ -1,7 +1,7 @@
 .container {
   margin: 40px 80px 0px;
   padding: 20px;
-  border: 1px solid gray;
+  border: 2px solid rgb(176, 174, 174);
   width: 800px;
 }
 small {
