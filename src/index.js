@@ -14,8 +14,20 @@ function formatDate(timestamp) {
   return `${day}, ${month} ${currentDate}`;
 }
 
-/* search a city */
 
+function showFahrenheitTemperature() {
+  let temperatureElement = document.querySelector("#current-temperature")
+  let fahrenheitTemperature = (celsiusTemperature * 1.8) + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function showcelsiusTemperature() {
+  let temperatureElement = document.querySelector("#current-temperature")
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+}
+
+/* Search a city */
 function updateValues(response) {
 
   let dateElement = document.querySelector("#currrent-date");
@@ -35,7 +47,8 @@ function updateValues(response) {
   windElement.innerHTML = response.data.wind.speed;
 
   let currentTemperatureElement = document.querySelector("#current-temperature");
-  currentTemperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  celsiusTemperature = response.data.temperature.current;
+  currentTemperatureElement.innerHTML = Math.round(celsiusTemperature);
 
   let imageElement = document.querySelector("#current-temperature-img");
   imageElement.setAttribute("src", response.data.condition.icon_url);
@@ -51,12 +64,21 @@ function searchCity(event) {
 
 }
 
+let celsiusTemperature;
+
 let searchElement = document.querySelector("#search-input");
 searchElement.addEventListener("submit", searchCity);
 
+/* Temperature switcher */
 
-/* default city */
+let fahrenheitElement = document.querySelector("#fahrenheit-link");
+fahrenheitElement.addEventListener("click", showFahrenheitTemperature);
 
+let celsiusElement = document.querySelector("#celsius-link");
+celsiusElement.addEventListener("click", showcelsiusTemperature);
+
+
+/* Default city */
 let cityElement = document.querySelector("#city");
 cityName = "Munich";
 let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${apiKey}&units=metric`;
