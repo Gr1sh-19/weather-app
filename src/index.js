@@ -17,12 +17,16 @@ function formatDate(timestamp) {
 
 function showFahrenheitTemperature() {
   let temperatureElement = document.querySelector("#current-temperature")
+  fahrenheitElement.classList.add("active");
+  celsiusElement.classList.remove("active");
   let fahrenheitTemperature = (celsiusTemperature * 1.8) + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function showcelsiusTemperature() {
   let temperatureElement = document.querySelector("#current-temperature")
+  celsiusElement.classList.add("active");
+  fahrenheitElement.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 
 }

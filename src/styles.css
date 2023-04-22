@@ -16,3 +16,16 @@ small {
 ul {
   list-style: none;
 }
+
+.temperature .active {
+  text-decoration: none;
+  color: black;
+  cursor: default;
+}
+#current-temperature {
+  font-size: 32px;
+  font-weight: 500;
+}
+sup {
+  font-size: 16px;
+}
