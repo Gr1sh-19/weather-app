@@ -1,4 +1,6 @@
 const apiKey = "d30352adf546160cc3b7co4bf1t16aee";
+let celsiusTemperature;
+
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
@@ -13,7 +15,6 @@ function formatDate(timestamp) {
   currentDate = date.getDate();
   return `${day}, ${month} ${currentDate}`;
 }
-
 
 function showFahrenheitTemperature() {
   let temperatureElement = document.querySelector("#current-temperature")
@@ -31,7 +32,6 @@ function showcelsiusTemperature() {
 
 }
 
-/* Search a city */
 function updateValues(response) {
 
   let dateElement = document.querySelector("#currrent-date");
@@ -68,13 +68,11 @@ function searchCity(event) {
 
 }
 
-let celsiusTemperature;
-
+/* Search a city */
 let searchElement = document.querySelector("#search-input");
 searchElement.addEventListener("submit", searchCity);
 
 /* Temperature switcher */
-
 let fahrenheitElement = document.querySelector("#fahrenheit-link");
 fahrenheitElement.addEventListener("click", showFahrenheitTemperature);
 

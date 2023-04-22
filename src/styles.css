@@ -1,25 +1,27 @@
-.body {
+body {
   font-family: Arial, Helvetica, sans-serif;
 }
-a {
-  text-decoration: none;
-}
+
 .container {
   margin: 40px 80px 0px;
   padding: 20px;
   border: 2px solid rgb(176, 174, 174);
   width: 800px;
+  color: rgb(48, 46, 46);
 }
-small {
-  margin: 0px 80px;
+h1 {
+  color: rgb(110, 110, 116);
 }
+
 ul {
   list-style: none;
 }
-
-.temperature .active {
+#fahrenheit-link,
+#celsius-link {
   text-decoration: none;
-  color: black;
+}
+.temperature .active {
+  color: rgb(48, 46, 46);
   cursor: default;
 }
 #current-temperature {
@@ -28,4 +30,10 @@ ul {
 }
 sup {
   font-size: 16px;
+}
+small {
+  font-size: 10px;
+}
+small {
+  margin: 0px 80px;
 }
