@@ -63,6 +63,11 @@ function searchCity(event) {
   event.preventDefault();
   let citySearchElement = document.querySelector("#search-city-form");
   cityName = citySearchElement.value;
+  cityName = cityName.trim();
+  if (cityName === "") {
+    alert("Please enter a city name")
+    return;
+  }
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${apiKey}&units=metric`;
   axios.get(cityUrl).then(updateValues)
 
