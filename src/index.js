@@ -32,13 +32,19 @@ function showcelsiusTemperature() {
 
 }
 
-function updateValues(response) {
 
-  let dateElement = document.querySelector("#currrent-date");
-  dateElement.innerHTML = formatDate(response.data.time * 1000);
+
+function updateValues(response) {
 
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
+  if (cityElement.innerHTML === "undefined") {
+    alert("Please enter a valid city name")
+    location.reload()
+    return;
+  }
+  let dateElement = document.querySelector("#currrent-date");
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
 
   let conditionsElement = document.querySelector("#weather-conditions");
   conditions = response.data.condition.description;
@@ -57,7 +63,10 @@ function updateValues(response) {
   let imageElement = document.querySelector("#current-temperature-img");
   imageElement.setAttribute("src", response.data.condition.icon_url);
 
+
 }
+
+
 
 function searchCity(event) {
   event.preventDefault();
