@@ -18,19 +18,28 @@ function formatDate(timestamp) {
 
 function forecastTemperature() {
   let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML =
-    `<div class="row" id="forecast">
-      <div class="col-md-6">
-        <ul>
-          <li class="temperature">
-            Mon <div>
-              <img src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png">
-            </div>
-            5 °C
-          </li>
-        </ul>
-      </div>
-    </div>`
+  let forecastHTML = `<div class="row">`
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML = forecastHTML +
+      `<div class="col-md-2">
+          <ul>
+            <li class="temperature">
+              ${day} <div>
+                <img src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png">
+              </div>
+              5 °C
+            </li>
+          </ul>
+        </div>`
+  })
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+
+
+
+
 }
 
 
@@ -80,9 +89,6 @@ function showTemperature(response) {
 
   let imageElement = document.querySelector("#current-temperature-img");
   imageElement.setAttribute("src", response.data.condition.icon_url);
-
-  forecastTemperature();
-
 }
 
 
@@ -117,3 +123,5 @@ let cityElement = document.querySelector("#city");
 cityName = "Munich";
 let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${apiKey}&units=metric`;
 axios.get(cityUrl).then(showTemperature);
+
+forecastTemperature();
