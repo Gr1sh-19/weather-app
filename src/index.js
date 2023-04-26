@@ -24,7 +24,7 @@ function forecastTemperature() {
         <ul>
           <li class="temperature">
             Mon <div>
-              <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png">
+              <img src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png">
             </div>
             5 °C
           </li>
