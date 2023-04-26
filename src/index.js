@@ -16,6 +16,25 @@ function formatDate(timestamp) {
   return `${day}, ${month} ${currentDate}`;
 }
 
+function forecastTemperature() {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML =
+    `<div class="row" id="forecast">
+      <div class="col-md-6">
+        <ul>
+          <li class="temperature">
+            Mon <div>
+              <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png">
+            </div>
+            5 °C
+          </li>
+        </ul>
+      </div>
+    </div>`
+}
+
+
+
 function showFahrenheitTemperature() {
   let temperatureElement = document.querySelector("#current-temperature")
   fahrenheitElement.classList.add("active");
@@ -33,8 +52,7 @@ function showcelsiusTemperature() {
 }
 
 
-
-function updateValues(response) {
+function showTemperature(response) {
 
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
@@ -63,9 +81,9 @@ function updateValues(response) {
   let imageElement = document.querySelector("#current-temperature-img");
   imageElement.setAttribute("src", response.data.condition.icon_url);
 
+  forecastTemperature();
 
 }
-
 
 
 function searchCity(event) {
@@ -78,7 +96,7 @@ function searchCity(event) {
     return;
   }
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${apiKey}&units=metric`;
-  axios.get(cityUrl).then(updateValues)
+  axios.get(cityUrl).then(showTemperature)
 
 }
 
@@ -98,4 +116,4 @@ celsiusElement.addEventListener("click", showcelsiusTemperature);
 let cityElement = document.querySelector("#city");
 cityName = "Munich";
 let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${apiKey}&units=metric`;
-axios.get(cityUrl).then(updateValues);
+axios.get(cityUrl).then(showTemperature);
