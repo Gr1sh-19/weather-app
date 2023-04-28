@@ -39,8 +39,8 @@ function forecastTemperature(response) {
               </div>
                 <img src=${forecastDay.condition.icon_url}>
               <div class = "forecast-temperature">
-                  <span class = "forecast-temperature-max"> ${Math.round(forecastDay.temperature.minimum)}</span>°
-                  <span class = "forecast-temperature-min" > ${Math.round(forecastDay.temperature.maximum)}</span>°
+                  <span class = "forecast-temperature-max"> ${Math.round(forecastDay.temperature.maximum)}</span>°
+                  <span class = "forecast-temperature-min" > ${Math.round(forecastDay.temperature.minimum)}</span>°
               </div>
        </div>`
       console.log(forecastDay.condition.icon_url);

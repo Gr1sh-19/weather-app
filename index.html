@@ -17,14 +17,14 @@
   <div class="container">
     <form id="search-input">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" id="search-city-form" placeholder="Search city" aria-label="Search city"
-          autocomplete="off" aria-describedby="button-addon2">
+        <input type="text" class="form-control" id="search-city-form" placeholder="Search city..."
+          aria-label="Search city" autocomplete="off" aria-describedby="button-addon2">
         <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
       </div>
     </form>
     <h1 id="city"></h1>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 today">
         <ul>
           <li id="currrent-date">
           </li>
@@ -32,7 +32,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 today">
         <div class="row">
           <ul>
             <li>
@@ -48,16 +48,14 @@
         <ul>
           <li class="temperature">
             <img src="" id="current-temperature-img"> <sub><span id="current-temperature"></span></sub>
-            <sup> °<a href="#" id="celsius-link" class="active">C</a>
+            <sup> °C</a>
             </sup>
           </li>
         </ul>
       </div>
     </div>
     <div class="forecast" id="forecast">
-
     </div>
-
   </div>
   <small>
     <a href="https://github.com/Gr1sh-19/weather-app" target="_blank">Open source code </a>by Grishma Nair
