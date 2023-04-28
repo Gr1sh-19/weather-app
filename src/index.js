@@ -39,8 +39,8 @@ function forecastTemperature(response) {
               </div>
                 <img src=${forecastDay.condition.icon_url}>
               <div class = "forecast-temperature">
-                  <span class = "forecast-temperature-max"> ${Math.round(forecastDay.temperature.minimum)}</span> °
-                  <span class = "forecast-temperature-min" > ${Math.round(forecastDay.temperature.maximum)}</span> °
+                  <span class = "forecast-temperature-max"> ${Math.round(forecastDay.temperature.minimum)}</span>°
+                  <span class = "forecast-temperature-min" > ${Math.round(forecastDay.temperature.maximum)}</span>°
               </div>
        </div>`
       console.log(forecastDay.condition.icon_url);
@@ -52,23 +52,6 @@ function forecastTemperature(response) {
 
 }
 
-
-
-function showFahrenheitTemperature() {
-  let temperatureElement = document.querySelector("#current-temperature")
-  fahrenheitElement.classList.add("active");
-  celsiusElement.classList.remove("active");
-  let fahrenheitTemperature = (celsiusTemperature * 1.8) + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function showcelsiusTemperature() {
-  let temperatureElement = document.querySelector("#current-temperature")
-  celsiusElement.classList.add("active");
-  fahrenheitElement.classList.remove("active");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-
-}
 
 
 function showTemperature(response) {
@@ -124,12 +107,6 @@ function searchCity(event) {
 let searchElement = document.querySelector("#search-input");
 searchElement.addEventListener("submit", searchCity);
 
-/* Temperature switcher */
-let fahrenheitElement = document.querySelector("#fahrenheit-link");
-fahrenheitElement.addEventListener("click", showFahrenheitTemperature);
-
-let celsiusElement = document.querySelector("#celsius-link");
-celsiusElement.addEventListener("click", showcelsiusTemperature);
 
 
 /* Default city */
