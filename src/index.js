@@ -1,5 +1,7 @@
 const apiKey = "d30352adf546160cc3b7co4bf1t16aee";
 let celsiusTemperature;
+let cityName = "Munich";
+
 
 
 function formatDate(timestamp) {
@@ -16,29 +18,38 @@ function formatDate(timestamp) {
   return `${day}, ${month} ${currentDate}`;
 }
 
-function forecastTemperature() {
+function formatDay(timestamp) {
+  date = new Date(timestamp * 1000);
+  day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  day = days[day];
+  console.log(day);
+  return day;
+}
+
+function forecastTemperature(response) {
+  let forecast = response.data.daily;
+  console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
-    forecastHTML = forecastHTML +
-      `<div class="col-md-2">
-          <ul>
-            <li class="temperature">
-              ${day} <div>
-                <img src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML = forecastHTML +
+        `<div class="col-md-2">
+            <div class="forecast-temperature-date">
+              ${formatDay(forecastDay.time)} 
               </div>
-              5 °C
-            </li>
-          </ul>
-        </div>`
+                <img src=${forecastDay.condition.icon_url}>
+              <div class = "forecast-temperature">
+                  <span class = "forecast-temperature-max"> ${Math.round(forecastDay.temperature.minimum)}</span> °
+                  <span class = "forecast-temperature-min" > ${Math.round(forecastDay.temperature.maximum)}</span> °
+              </div>
+       </div>`
+    }
   })
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-
-
-
 
 }
 
@@ -89,6 +100,8 @@ function showTemperature(response) {
 
   let imageElement = document.querySelector("#current-temperature-img");
   imageElement.setAttribute("src", response.data.condition.icon_url);
+
+
 }
 
 
@@ -120,8 +133,10 @@ celsiusElement.addEventListener("click", showcelsiusTemperature);
 
 /* Default city */
 let cityElement = document.querySelector("#city");
-cityName = "Munich";
 let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${apiKey}&units=metric`;
 axios.get(cityUrl).then(showTemperature);
 
-forecastTemperature();
+/* Temperature forecast */
+//cityName = cityElement.innerHTML;
+let forecastURL = `https://api.shecodes.io/weather/v1/forecast?query=${cityName}&key=${apiKey}&units=metric`;
+axios.get(forecastURL).then(forecastTemperature);
