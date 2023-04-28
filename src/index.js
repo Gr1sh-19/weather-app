@@ -2,8 +2,6 @@ const apiKey = "d30352adf546160cc3b7co4bf1t16aee";
 let celsiusTemperature;
 let cityName = "Munich";
 
-
-
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let month = date.getMonth();
@@ -45,6 +43,7 @@ function forecastTemperature(response) {
                   <span class = "forecast-temperature-min" > ${Math.round(forecastDay.temperature.maximum)}</span> °
               </div>
        </div>`
+      console.log(forecastDay.condition.icon_url);
     }
   })
 
@@ -101,7 +100,10 @@ function showTemperature(response) {
   let imageElement = document.querySelector("#current-temperature-img");
   imageElement.setAttribute("src", response.data.condition.icon_url);
 
-
+  /* Temperature forecast */
+  cityName = cityElement.innerHTML;
+  let forecastURL = `https://api.shecodes.io/weather/v1/forecast?query=${cityName}&key=${apiKey}&units=metric`;
+  axios.get(forecastURL).then(forecastTemperature);
 }
 
 
@@ -116,7 +118,6 @@ function searchCity(event) {
   }
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${apiKey}&units=metric`;
   axios.get(cityUrl).then(showTemperature)
-
 }
 
 /* Search a city */
@@ -135,8 +136,3 @@ celsiusElement.addEventListener("click", showcelsiusTemperature);
 let cityElement = document.querySelector("#city");
 let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${apiKey}&units=metric`;
 axios.get(cityUrl).then(showTemperature);
-
-/* Temperature forecast */
-//cityName = cityElement.innerHTML;
-let forecastURL = `https://api.shecodes.io/weather/v1/forecast?query=${cityName}&key=${apiKey}&units=metric`;
-axios.get(forecastURL).then(forecastTemperature);
