@@ -21,13 +21,11 @@ function formatDay(timestamp) {
   day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
   day = days[day];
-  console.log(day);
   return day;
 }
 
 function forecastTemperature(response) {
   let forecast = response.data.daily;
-  console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`
   forecast.forEach(function (forecastDay, index) {
@@ -43,7 +41,6 @@ function forecastTemperature(response) {
                   <span class = "forecast-temperature-min" > ${Math.round(forecastDay.temperature.minimum)}</span>°
               </div>
        </div>`
-      console.log(forecastDay.condition.icon_url);
     }
   })
 
